@@ -1,0 +1,77 @@
+/* src/styles/navbar.css */
+
+/* Estilos básicos del navbar */
+.navbar {
+    background-color: rgba(28, 42, 51, 0.7); /* Fondo oscuro con opacidad */
+    backdrop-filter: blur(10px); /* Desenfoque */
+    color: white;
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Logo */
+  .navbar-logo img {
+    width: 80px;
+    height: auto;
+  }
+  
+  /* Menú de navegación (pantallas grandes) */
+  .navbar-links {
+    display: none; /* Oculto en pantallas pequeñas */
+  }
+  
+  .navbar-links a {
+    color: white;
+    margin-left: 1.5rem;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+  }
+  
+  .navbar-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Icono de menú hamburguesa */
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+  
+  /* Menú desplegable en pantallas pequeñas */
+  .navbar-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .navbar-dropdown a {
+    color: white;
+    margin-top: 0.5rem;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+  }
+  
+  .navbar-dropdown a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Estilos de diseño responsivo */
+  @media (min-width: 1024px) {
+    .navbar-links {
+      display: flex;
+    }
+    .menu-icon {
+      display: none;
+    }
+    .navbar-dropdown {
+      display: none;
+    }
+  }
+  
