@@ -1,13 +1,25 @@
 import Link from 'next/link';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+
+  // Función para manejar el clic en los enlaces del menú
+  const handleLinkClick = (href: string) => {
+    // Si la ruta actual es la misma que el href o es diferente, cerramos el menú
+    setIsOpen(false);
+    // Navega a la ruta si es diferente
+    if (router.pathname !== href) {
+      router.push(href);
+    }
+  };
 
   return (
     <nav className="bg-[#1c2a33] bg-opacity-70 backdrop-blur-md text-white px-4 py-1 fixed w-full top-0 z-50">
       <div className="flex justify-between items-center">
-        {/* Logo actualizado */}
+        {/* Logo */}
         <div className="flex-shrink-0">
           <img src="/logo_blanco_p.png" alt="Logo" className="w-[80px] h-auto" />
         </div>
@@ -53,10 +65,10 @@ const Navbar = () => {
       {isOpen && (
         <div className="lg:hidden">
           <div className="flex flex-col items-center space-y-4 mt-4">
-            <Link href="/" className="hover:underline transition duration-300">Inicio</Link>
-            <Link href="/conoce" className="hover:underline transition duration-300">Conoce</Link>
-            <Link href="/logros" className="hover:underline transition duration-300">Logros</Link>
-            <Link href="/contacto" className="hover:underline transition duration-300">Contacto</Link>
+            <a onClick={() => handleLinkClick('/')} className="hover:underline transition duration-300 cursor-pointer">Inicio</a>
+            <a onClick={() => handleLinkClick('/conoce')} className="hover:underline transition duration-300 cursor-pointer">Conoce</a>
+            <a onClick={() => handleLinkClick('/logros')} className="hover:underline transition duration-300 cursor-pointer">Logros</a>
+            <a onClick={() => handleLinkClick('/contacto')} className="hover:underline transition duration-300 cursor-pointer">Contacto</a>
           </div>
         </div>
       )}
@@ -65,7 +77,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
 
 
 

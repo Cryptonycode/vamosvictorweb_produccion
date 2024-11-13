@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import Head from 'next/head';
-import Navbar from '../components/Navbar'; // Navbar
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 export default function Home() {
   // Estado para almacenar los datos del primer formulario
-  const [name, setName] = useState('');
+  const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
-  const [postalCode, setPostalCode] = useState('');
+  const [codigoPostal, setCodigoPostal] = useState('');
 
   // Estado para almacenar el correo electrónico del segundo formulario
   const [newsEmail, setNewsEmail] = useState('');
@@ -15,19 +16,23 @@ export default function Home() {
     e.preventDefault();
 
     // Enviar los datos del primer formulario al backend
-    const response = await fetch('/api/save-contact', {
+    const response = await fetch('/api/embajadores', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, email, postalCode }),
+      body: JSON.stringify({
+        nombre: nombre,
+        email: email,
+        codigo_postal: codigoPostal,
+      }),
     });
 
     if (response.ok) {
       alert('Datos enviados correctamente');
-      setName(''); // Limpiar el formulario
+      setNombre(''); // Limpiar el formulario
       setEmail('');
-      setPostalCode('');
+      setCodigoPostal('');
     } else {
       alert('Error al enviar los datos');
     }
@@ -73,11 +78,11 @@ export default function Home() {
       <section
         className="bg-cover bg-center h-[140vh] flex flex-col justify-end items-center text-center px-4"
         style={{
-          backgroundImage: "url('/foto_vgf_web.jpeg')",
+          backgroundImage: "url('/foto_vgf_web.jpg')",
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundPosition: 'top',
-          paddingTop: '80px', // Espacio debajo del navbar
+          paddingTop: '80px',
         }}
       >
         {/* Contenedor del texto */}
@@ -90,9 +95,9 @@ export default function Home() {
             <input
               type="text"
               placeholder="Nombre*"
-              className="w-[80%] p-2 text-sm border border-gray-300 rounded mx-auto text-gray-800" // Color del texto cambiado a gris oscuro
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              className="w-[80%] p-2 text-sm border border-gray-300 rounded mx-auto text-gray-800"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
               required
             />
 
@@ -100,7 +105,7 @@ export default function Home() {
             <input
               type="email"
               placeholder="Correo electrónico*"
-              className="w-[80%] p-2 text-sm border border-gray-300 rounded mx-auto text-gray-800" // Color del texto cambiado a gris oscuro
+              className="w-[80%] p-2 text-sm border border-gray-300 rounded mx-auto text-gray-800"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -111,9 +116,9 @@ export default function Home() {
               <input
                 type="text"
                 placeholder="Código postal*"
-                className="w-1/4 p-2 text-sm border border-gray-300 rounded text-gray-800" // Color del texto cambiado a gris oscuro
-                value={postalCode}
-                onChange={(e) => setPostalCode(e.target.value)}
+                className="w-1/4 p-2 text-sm border border-gray-300 rounded text-gray-800"
+                value={codigoPostal}
+                onChange={(e) => setCodigoPostal(e.target.value)}
                 required
               />
               <button
@@ -145,7 +150,6 @@ export default function Home() {
 
       {/* Sección Intermedia */}
       <section className="bg-[#b08b08] text-white text-center">
-        {/* Imagen del logo principal, sin margen ni padding */}
         <img src="/logo_mostaza.jpg" alt="Logo Victor" className="mx-auto w-[240px] h-auto p-0 m-0" />
       </section>
 
@@ -176,64 +180,20 @@ export default function Home() {
 
       {/* Sección de logros */}
       <section className="bg-white py-8 px-4 text-center">
-        {/* Título de la sección */}
         <h2 className="text-3xl font-bold mb-8 text-[#1B2A33]">Lo que hemos conseguido</h2>
-
-        {/* Contenedor de las tarjetas de logros */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Tarjeta de Logro 1 */}
+          {/* Logros */}
           <div className="bg-gray-50 p-6 rounded-lg shadow-lg">
             <div className="text-[#05B036] mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-12 h-12 mx-auto"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-12 h-12 mx-auto">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
               </svg>
             </div>
             <h3 className="text-xl font-bold mb-2 text-[#05B036]">Logro 1</h3>
             <p className="text-[#1B2A33]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
-
-          {/* Tarjeta de Logro 2 */}
-          <div className="bg-gray-50 p-6 rounded-lg shadow-lg">
-            <div className="text-[#05B036] mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-12 h-12 mx-auto"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold mb-2 text-[#05B036]">Logro 2</h3>
-            <p className="text-[#1B2A33]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-
-          {/* Tarjeta de Logro 3 */}
-          <div className="bg-gray-50 p-6 rounded-lg shadow-lg">
-            <div className="text-[#05B036] mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-12 h-12 mx-auto"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold mb-2 text-[#05B036]">Logro 3</h3>
-            <p className="text-[#1B2A33]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
+          {/* Más logros... */}
         </div>
-
-        {/* Botón "Ver más logros" */}
         <div className="mt-8">
           <button className="bg-[#1B2A33] text-white font-bold py-2 px-4 rounded hover:bg-[#33354d]">
             Ver más logros
@@ -263,41 +223,11 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#1c2a33] text-white py-4 px-4">
-        <div className="flex justify-between items-center flex-col lg:flex-row">
-          {/* Logo principal actualizado a .svg */}
-          <img src="/logo_blanco.png" alt="Logo Victor" className="w-[140px] h-auto mb-4 lg:mb-0" />
-
-          {/* Sección de redes sociales */}
-          <div className="flex space-x-6 mb-4 lg:mb-0">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src="/facebook.svg" alt="Facebook Logo" className="w-[30px] h-auto filter invert" />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src="/instagram.svg" alt="Instagram Logo" className="w-[30px] h-auto filter invert" />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src="/x.svg" alt="X Logo" className="w-[30px] h-auto filter invert" />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src="/youtube.svg" alt="YouTube Logo" className="w-[30px] h-auto filter invert" />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src="/tiktok.svg" alt="TikTok Logo" className="w-[30px] h-auto filter invert" />
-            </a>
-          </div>
-
-          {/* Contacto de prensa */}
-          <div className="text-center lg:text-left">
-            <p className="text-sm">Contacto de prensa:</p>
-            <p className="text-sm font-bold">victorgonzalezcomunicacion@gmail.com</p>
-          </div>
-        </div>
-        <div className="text-center text-xs mt-4">© 2024 - Victor González Comunicación</div>
-      </footer>
+      <Footer />
     </div>
   );
 }
+
 
 
 
