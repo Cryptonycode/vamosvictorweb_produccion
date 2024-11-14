@@ -32,6 +32,8 @@ export default function Conoce() {
       }
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
+      console.error('Error al enviar el formulario:',);
+
       alert('Error al procesar la solicitud. Inténtalo nuevamente.');
     } finally {
       setIsSubmitting(false);
