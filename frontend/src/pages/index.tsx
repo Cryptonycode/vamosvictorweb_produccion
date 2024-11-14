@@ -24,8 +24,7 @@ export default function Home() {
           email,
           codigo_postal: codigoPostal,
         }),
-    });
-    
+      });
 
       if (response.ok) {
         alert('Datos enviados correctamente');
@@ -45,14 +44,13 @@ export default function Home() {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:5000/api/newsletter`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/newsletter`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email: newsEmail }),
       });
-      
 
       if (response.ok) {
         alert('Te has suscrito correctamente');

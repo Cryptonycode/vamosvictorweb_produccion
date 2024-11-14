@@ -1,5 +1,3 @@
-// src/api/embajadores.ts
-
 import { Router } from 'express';
 import { connection } from '../lib/mysqlConnection'; // Asegúrate de que esta ruta es correcta
 import Joi from 'joi';

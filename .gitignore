@@ -50,12 +50,6 @@ next-env.d.ts
 *.swp
 *~
 
-# Archivos de salida de herramientas de configuración de PostCSS y TailwindCSS
-postcss.config.js
-postcss.config.mjs
-tailwind.config.js
-tailwind.config.mjs
-
 # Ignorar otras carpetas específicas del proyecto
 /backend/node_modules
 /frontend/node_modules

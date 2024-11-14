@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter(); // Hook para acceder a la ruta actual
