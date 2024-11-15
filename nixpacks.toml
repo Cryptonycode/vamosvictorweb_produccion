@@ -1,0 +1,15 @@
+# Define las fases de construcción
+[phases]
+
+# Construir el backend
+[phases.backend]
+command = "cd backend && npm install && npm run build"
+
+# Construir el frontend
+[phases.frontend]
+command = "cd frontend && npm install && npm run build"
+
+# Iniciar la aplicación
+[phases.start]
+command = "cd backend && npm run dev"
+command = "cd frontend && npm start"
