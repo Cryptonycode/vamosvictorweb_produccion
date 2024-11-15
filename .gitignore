@@ -53,3 +53,6 @@ next-env.d.ts
 # Ignorar otras carpetas específicas del proyecto
 /backend/node_modules
 /frontend/node_modules
+
+# Ignorar archivos compilados
+/backend/dist
