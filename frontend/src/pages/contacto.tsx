@@ -62,7 +62,7 @@ export default function Contacto() {
       <section className="bg-[#1c2a33] text-white py-12 px-4 text-center">
         <h2 className="text-2xl font-bold">Contáctame</h2>
         <p className="mt-4 text-sm">
-          Envíame tus propuestas, ideas o dificultades y hablemos directamente para tratar de resolverlo.
+          Envíame propuestas, ideas o dificultades y hablemos directamente para tratar de resolverlo.
         </p>
         <a
           href="https://w.app/vamosvictor"
